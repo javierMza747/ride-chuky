@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+
+@font-face {
+    font-family: 'Halja-regular';
+    src: url('/fonts/HaljaOT-Regular.woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    background-color: rgb(202, 202, 202);
+}

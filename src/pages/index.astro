@@ -1,0 +1,20 @@
+---
+import Welcome from '../components/Welcome.astro';
+import Instructores from '../components/instructores.astro';
+import DondeEnsenamos from '../components/donde-ensenamos.astro';
+import NivelesSeccion from '../components/niveles-seccion.astro';
+import Layout from '../layouts/Layout.astro';
+import './src/styles/global.css'
+import Navbar from '../components/shared/navbar'
+
+// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
+// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+---
+
+<Layout>
+	<!-- <Navbar client:load></Navbar> -->
+	<Welcome />
+	<Instructores />
+	<DondeEnsenamos />
+	<NivelesSeccion />
+</Layout>
