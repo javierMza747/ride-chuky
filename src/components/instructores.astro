@@ -1,43 +1,364 @@
 ---
 // src/components/QuienesSomosSection.astro
+const fotos = [
+  {
+    id: 1,
+    src: "/img/myname.png",
+    alt: "Juan Cruz enseñando MTB"
+  },
+  {
+    id: 2,
+    src: "/img/myname-2.png",
+    alt: "Facundo Arce en la pista"
+  },
+  {
+    id: 3,
+    src: "/img/promax.png",
+    alt: "Clases de MTB en acción"
+  }
+];
 ---
 
 <section id="quienes-somos" class="py-24 bg-white">
   <div class="max-w-6xl mx-auto px-6">
-    <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+    
+    <!-- Título -->
+    <div class="text-center mb-12">
+      <h2 class="section-title text-5xl">
+        NOSOTROS
+      </h2>
+    </div>
+    
+    <!-- Fotos - Desktop: 3 columnas, Mobile: Carousel -->
+    <div class="mb-12">
+      <!-- Desktop: Grid de 3 fotos -->
+      <div class="hidden md:grid md:grid-cols-3 gap-6">
+        {fotos.map((foto) => (
+          <div class="relative">
+            <img
+              src={foto.src || "/placeholder.svg"}
+              alt={foto.alt}
+              class="w-full h-80 object-cover shadow-md"
+            />
+          </div>
+        ))}
+      </div>
       
-      <!-- Imagen simple -->
-      <div class="w-full lg:w-1/2">
-        <div class="relative">
-          <img
-            src="/img/myname.png"
-            alt="Juan Cruz y Facundo Arce - Instructores de MTB"
-            class="w-full h-auto object-cover rounded-md shadow-md"
-          />
+      <!-- Mobile: Carousel -->
+      <div class="md:hidden relative">
+        <div class="carousel-container overflow-hidden">
+          <div class="carousel-track flex" id="carousel-track">
+            {fotos.map((foto, index) => (
+              <div class="carousel-slide flex-shrink-0">
+                <img
+                  src={foto.src || "/placeholder.svg"}
+                  alt={foto.alt}
+                  class="w-full h-96 object-cover"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+        
+        <!-- Barra indicadora con secciones -->
+        <div class="mt-6">
+          <div class="relative w-full bg-gray-200 h-1 rounded-full overflow-hidden">
+            <div 
+              class="absolute h-full bg-black transition-all duration-300 ease-out rounded-full"
+              id="indicator-bar"
+              style="width: 33.33%; left: 0%"
+            ></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Contenido de texto -->
+    <div class="max-w-4xl mx-auto space-y-8">
+      <div class="text-center">
+        <p class="text-lg text-gray-700 mb-6 leading-relaxed din-text">
+          Somos <strong>Juan Cruz</strong> y <strong>Facundo Arce</strong>, dos apasionados del MTB con más de 10 años recorriendo senderos y enseñando a otros a disfrutar de este deporte.
+        </p>
+        
+        <p class="text-lg text-gray-700 mb-6 leading-relaxed din-text">
+          Nos dedicamos a enseñar mountain bike desde lo básico hasta técnicas avanzadas, adaptando nuestras clases a cada persona. Creemos que todos pueden experimentar la libertad y adrenalina de rodar sobre dos ruedas, sin importar su edad o experiencia previa.
+        </p>
+        
+        <p class="text-lg text-gray-700 mb-8 leading-relaxed din-text">
+          Nuestra filosofía es simple: aprender divirtiéndose y superando límites en un ambiente seguro. Cada clase es una nueva aventura donde combinamos técnica, seguridad y mucha pasión por el MTB.
+        </p>
+      </div>
+      
+      <!-- Especialidades -->
+      <div class="text-center space-y-4">
+        <h3 class="text-xl font-semibold text-gray-900 din-text">Nuestras especialidades:</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-2xl mx-auto">
+          <div class="flex items-center justify-center md:justify-start">
+            <span class="w-1.5 h-1.5 bg-black rounded-full mr-3"></span>
+            <span class="din-text">Técnicas de equilibrio y control</span>
+          </div>
+          <div class="flex items-center justify-center md:justify-start">
+            <span class="w-1.5 h-1.5 bg-black rounded-full mr-3"></span>
+            <span class="din-text">Descenso y manejo en terrenos técnicos</span>
+          </div>
+          <div class="flex items-center justify-center md:justify-start">
+            <span class="w-1.5 h-1.5 bg-black rounded-full mr-3"></span>
+            <span class="din-text">Saltos y obstáculos</span>
+          </div>
+          <div class="flex items-center justify-center md:justify-start">
+            <span class="w-1.5 h-1.5 bg-black rounded-full mr-3"></span>
+            <span class="din-text">Clases para niños y principiantes</span>
+          </div>
         </div>
       </div>
       
-      <!-- Contenido de "Quienes Somos" -->
-      <div class="w-full lg:w-1/2 space-y-8">
-        <div>
-          <h2 class="text-5xl font-bold text-gray-900 mb-6">
-            Quiénes Somos
-          </h2>
-          
-          <p class="text-lg text-gray-700 mb-6 leading-relaxed">
-            Somos <strong>Juan Cruz</strong> y <strong>Facundo Arce</strong>, dos apasionados del MTB con más de 10 años recorriendo senderos y enseñando a otros a disfrutar de este deporte.
-          </p>
-          
-          <p class="text-lg text-gray-700 mb-6 leading-relaxed">
-            Nos dedicamos a enseñar mountain bike desde lo básico hasta técnicas avanzadas, adaptando nuestras clases a cada persona. Creemos que todos pueden experimentar la libertad y adrenalina de rodar sobre dos ruedas, sin importar su edad o experiencia previa.
-          </p>
-          
-          <p class="text-lg text-gray-700 mb-8 leading-relaxed">
-            Nuestra filosofía es simple: aprender divirtiéndose y superando límites en un ambiente seguro. Cada clase es una nueva aventura donde combinamos técnica, seguridad y mucha pasión por el MTB.
-          </p>
-        </div>
-        
+      <!-- Botón centrado -->
+      <div class="text-center pt-4">
+        <button class="custom-button">
+          <span>Contactarnos</span>
+          <span class="custom-button-arrow"></span>
+        </button>
       </div>
     </div>
   </div>
 </section>
+
+<style>
+  @font-face {
+    font-family: 'Bebas-Regular';
+    src: url('/fonts/Bebas-Regular.woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'DIN-Regular';
+    src: url('/fonts/DIN-Regular.woff2');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  .section-title {
+    font-family: 'Bebas-Regular', Arial, sans-serif;
+    color: #000000;
+    font-weight: 100;
+  }
+
+  .din-text {
+    font-family: 'DIN-Regular', Arial, sans-serif;
+  }
+
+  .custom-button {
+    background: white;
+    border: 2px solid black;
+    color: black;
+    padding: 12px 24px;
+    font-family: 'DIN-Regular', Arial, sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .custom-button:hover {
+    background: black;
+    color: white;
+  }
+
+  .custom-button-arrow::after {
+    content: '→';
+    font-size: 16px;
+    transition: transform 0.2s ease;
+  }
+
+  .custom-button:hover .custom-button-arrow::after {
+    transform: translateX(4px);
+  }
+
+  /* Carrusel sin espacios entre imágenes */
+  .carousel-track {
+    transition: none;
+  }
+  
+  .carousel-slide {
+    width: 100vw; /* Usar el ancho completo de la ventana */
+    max-width: 100%; /* Asegurar que no exceda el contenedor */
+    padding: 0 4px; /* Espaciado mínimo entre imágenes */
+  }
+  
+  /* Asegurar que el contenedor tenga el ancho correcto */
+  .carousel-container {
+    width: 100%;
+    position: relative;
+    padding: 0 4px; /* Padding mínimo del contenedor */
+  }
+  
+  @media (min-width: 768px) {
+    .carousel-slide {
+      width: 100%; /* En desktop usar el ancho del contenedor */
+    }
+  }
+</style>
+
+<script>
+  // Funcionalidad del carousel analógico para mobile
+  document.addEventListener('DOMContentLoaded', function() {
+    const track = document.getElementById('carousel-track');
+    const indicatorBar = document.getElementById('indicator-bar');
+    const container = track.parentElement;
+    
+    if (!track || !indicatorBar || !container) return;
+    
+    let currentSlide = 0;
+    const totalSlides = 3;
+    let autoPlayInterval = null;
+    const autoPlayDelay = 4000;
+    
+    // Variables para el control analógico
+    let isDragging = false;
+    let startX = 0;
+    let currentX = 0;
+    let initialTransform = 0;
+    let containerWidth = 0;
+    
+    function updateContainerWidth() {
+      containerWidth = container.offsetWidth;
+      // Asegurar que cada slide tenga exactamente el ancho del contenedor
+      const slides = track.querySelectorAll('.carousel-slide');
+      slides.forEach(slide => {
+        slide.style.width = `${containerWidth}px`;
+      });
+    }
+    
+    function updateIndicator(slidePosition) {
+      const sectionWidth = 100 / totalSlides;
+      const leftPosition = slidePosition * sectionWidth;
+      
+      indicatorBar.style.left = `${leftPosition}%`;
+      indicatorBar.style.width = `${sectionWidth}%`;
+    }
+    
+    function setTrackPosition(position, withTransition = false) {
+      if (withTransition) {
+        track.style.transition = 'transform 0.3s ease-out';
+      } else {
+        track.style.transition = 'none';
+      }
+      track.style.transform = `translateX(${position}px)`;
+    }
+    
+    function snapToSlide(targetSlide) {
+      currentSlide = Math.max(0, Math.min(targetSlide, totalSlides - 1));
+      const targetPosition = -currentSlide * containerWidth;
+      setTrackPosition(targetPosition, true);
+      updateIndicator(currentSlide);
+    }
+    
+    function nextSlide() {
+      const nextSlideIndex = (currentSlide + 1) % totalSlides;
+      snapToSlide(nextSlideIndex);
+    }
+    
+    function startAutoPlay() {
+      stopAutoPlay();
+      autoPlayInterval = setInterval(nextSlide, autoPlayDelay);
+    }
+    
+    function stopAutoPlay() {
+      if (autoPlayInterval) {
+        clearInterval(autoPlayInterval);
+        autoPlayInterval = null;
+      }
+    }
+    
+    // Touch events
+    track.addEventListener('touchstart', (e) => {
+      isDragging = true;
+      startX = e.touches[0].clientX;
+      currentX = startX;
+      
+      // Obtener la posición actual del transform
+      const transform = track.style.transform;
+      const match = transform.match(/translateX$$([^)]+)px$$/);
+      initialTransform = match ? parseFloat(match[1]) : -currentSlide * containerWidth;
+      
+      stopAutoPlay();
+      updateContainerWidth();
+    });
+    
+    track.addEventListener('touchmove', (e) => {
+      if (!isDragging) return;
+      
+      e.preventDefault(); // Prevenir scroll de la página
+      currentX = e.touches[0].clientX;
+      const deltaX = currentX - startX;
+      const newPosition = initialTransform + deltaX;
+      
+      // Limitar el movimiento para no ir más allá de los límites
+      const maxPosition = 0;
+      const minPosition = -(totalSlides - 1) * containerWidth;
+      const clampedPosition = Math.max(minPosition, Math.min(maxPosition, newPosition));
+      
+      setTrackPosition(clampedPosition, false);
+      
+      // Actualizar indicador en tiempo real
+      const slideProgress = -clampedPosition / containerWidth;
+      updateIndicator(slideProgress);
+    });
+    
+    track.addEventListener('touchend', (e) => {
+      if (!isDragging) return;
+      
+      isDragging = false;
+      const deltaX = currentX - startX;
+      const threshold = containerWidth * 0.3; // 30% del ancho para cambiar slide
+      
+      let targetSlide = currentSlide;
+      
+      if (Math.abs(deltaX) > threshold) {
+        if (deltaX > 0) {
+          // Deslizar hacia la derecha - slide anterior
+          targetSlide = Math.max(0, currentSlide - 1);
+        } else {
+          // Deslizar hacia la izquierda - slide siguiente
+          targetSlide = Math.min(totalSlides - 1, currentSlide + 1);
+        }
+      }
+      
+      snapToSlide(targetSlide);
+      startAutoPlay();
+    });
+    
+    // Prevenir el comportamiento por defecto del navegador
+    track.addEventListener('touchmove', (e) => {
+      e.preventDefault();
+    }, { passive: false });
+    
+    // Mouse events para desktop (opcional)
+    track.addEventListener('mouseenter', stopAutoPlay);
+    track.addEventListener('mouseleave', startAutoPlay);
+    
+    // Manejar cambios de visibilidad
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'visible') {
+        startAutoPlay();
+      } else {
+        stopAutoPlay();
+      }
+    });
+    
+    // Manejar redimensionamiento de ventana
+    window.addEventListener('resize', () => {
+      updateContainerWidth();
+      snapToSlide(currentSlide);
+    });
+    
+    // Inicializar
+    updateContainerWidth();
+    snapToSlide(0);
+    startAutoPlay();
+  });
+</script>

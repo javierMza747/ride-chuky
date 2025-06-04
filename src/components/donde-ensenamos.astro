@@ -1,43 +1,492 @@
 ---
 // src/components/DondeEnsenamosSection.astro
+const fotos = [
+  {
+    id: 1,
+    src: "/img/pump-track.jpeg",
+    alt: "Pista de Pumptrack - Vista general"
+  },
+  {
+    id: 2,
+    src: "/img/pump-track-2.png",
+    alt: "Zona de saltos y obstáculos"
+  },
+  {
+    id: 3,
+    src: "/img/pump-track-3.png",
+    alt: "Área de entrenamiento para principiantes"
+  }
+];
 ---
 
-<section id="donde-ensenamos" class="py-24 bg-gray-50">
+<section id="donde-ensenamos" class="py-24 bg-white">
   <div class="max-w-6xl mx-auto px-6">
-    <div class="flex flex-col lg:flex-row-reverse items-center gap-12 lg:gap-16">
-      
-      <!-- Imagen simple (lado derecho) -->
-      <div class="w-full lg:w-1/2">
-        <div class="relative">
-          <img
-            src="/img/pump-track.jpeg"
-            alt="Pista de Pumptrack en 23 de Septiembre"
-            class="w-full h-auto object-cover rounded-md shadow-md"
-          />
-        </div>
-      </div>
-      
-      <!-- Contenido de "Donde Enseñamos" -->
-      <div class="w-full lg:w-1/2 space-y-8">
-        <div>
-          <h2 class="text-5xl font-bold text-gray-900 mb-6">
-            Dónde Enseñamos
-          </h2>
-          
-          <p class="text-lg text-gray-700 mb-6 leading-relaxed">
-            Enseñamos MTB en la <strong>pista de pumptrack de 23 de Septiembre</strong>, un espacio especialmente diseñado para el aprendizaje y perfeccionamiento de técnicas de ciclismo.
-          </p>
-          
-          <p class="text-lg text-gray-700 mb-6 leading-relaxed">
-            Esta pista cuenta con diferentes niveles de dificultad, desde sectores para principiantes hasta desafíos más técnicos para riders avanzados. El diseño del circuito permite practicar equilibrio, control de velocidad y maniobras básicas en un entorno controlado y seguro.
-          </p>
-          
-          <p class="text-lg text-gray-700 mb-8 leading-relaxed">
-            La ubicación es ideal para el aprendizaje: alejada del tráfico, con amplio espacio para maniobrar y un ambiente natural que hace que cada clase sea una experiencia única. Además, contamos con todas las medidas de seguridad necesarias.
-          </p>
+    
+    <!-- Título -->
+    <div class="text-center mb-12">
+      <h2 class="section-title text-5xl">
+        DONDE APRENDER
+      </h2>
+    </div>
+    
+    <!-- Layout Mobile: Carrusel arriba, texto abajo -->
+    <div class="lg:hidden">
+      <!-- Mobile: Carousel -->
+      <div class="mb-12">
+        <div class="carousel-container overflow-hidden">
+          <div class="carousel-track flex" id="carousel-track-donde-mobile">
+            {fotos.map((foto, index) => (
+              <div class="carousel-slide flex-shrink-0">
+                <img
+                  src={foto.src || "/placeholder.svg"}
+                  alt={foto.alt}
+                  class="w-full h-96 object-cover"
+                />
+              </div>
+            ))}
+          </div>
         </div>
         
+        <!-- Barra indicadora con secciones -->
+        <div class="mt-6">
+          <div class="relative w-full bg-gray-200 h-1 rounded-full overflow-hidden">
+            <div 
+              class="absolute h-full bg-black transition-all duration-300 ease-out rounded-full"
+              id="indicator-bar-donde-mobile"
+              style="width: 33.33%; left: 0%"
+            ></div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Mobile: Texto -->
+      <div class="space-y-6">
+        <p class="text-lg text-gray-700 leading-relaxed din-text">
+          Enseñamos MTB en la <strong>pista de pumptrack de 23 de Septiembre</strong>, un espacio especialmente diseñado para el aprendizaje y perfeccionamiento de técnicas de ciclismo.
+        </p>
+        
+        <p class="text-lg text-gray-700 leading-relaxed din-text">
+          Esta pista cuenta con diferentes niveles de dificultad, desde sectores para principiantes hasta desafíos más técnicos para riders avanzados. El diseño del circuito permite practicar equilibrio, control de velocidad y maniobras básicas en un entorno controlado y seguro.
+        </p>
+        
+        <p class="text-lg text-gray-700 leading-relaxed din-text">
+          La ubicación es ideal para el aprendizaje: alejada del tráfico, con amplio espacio para maniobrar y un ambiente natural que hace que cada clase sea una experiencia única. Además, contamos con todas las medidas de seguridad necesarias.
+        </p>
+        
+        <!-- Características del lugar -->
+        <div class="space-y-4 mt-8">
+          <h3 class="text-xl font-semibold text-gray-900 din-text">Características del lugar:</h3>
+          <ul class="space-y-2">
+            <li class="flex items-center">
+              <span class="w-1.5 h-1.5 bg-black rounded-full mr-3"></span>
+              <span class="din-text">Pista de pumptrack profesional</span>
+            </li>
+            <li class="flex items-center">
+              <span class="w-1.5 h-1.5 bg-black rounded-full mr-3"></span>
+              <span class="din-text">Diferentes niveles de dificultad</span>
+            </li>
+            <li class="flex items-center">
+              <span class="w-1.5 h-1.5 bg-black rounded-full mr-3"></span>
+              <span class="din-text">Ambiente seguro y controlado</span>
+            </li>
+            <li class="flex items-center">
+              <span class="w-1.5 h-1.5 bg-black rounded-full mr-3"></span>
+              <span class="din-text">Estacionamiento disponible</span>
+            </li>
+          </ul>
+        </div>
+        
+        <!-- Botón simple -->
+        <div class="pt-6">
+          <button class="custom-button">
+            <span>Ver Ubicacion</span>
+            <span class="custom-button-arrow"></span>
+          </button>
+        </div>
       </div>
     </div>
+    
+    <!-- Layout Desktop: 2/3 texto a la izquierda, 1/3 carrusel a la derecha -->
+    <div class="hidden lg:flex lg:flex-row lg:gap-12">
+      <!-- Desktop: Texto (2/3) -->
+      <div class="w-2/3 space-y-6">
+        <p class="text-lg text-gray-700 leading-relaxed din-text">
+          Enseñamos MTB en la <strong>pista de pumptrack de 23 de Septiembre</strong>, un espacio especialmente diseñado para el aprendizaje y perfeccionamiento de técnicas de ciclismo.
+        </p>
+        
+        <p class="text-lg text-gray-700 leading-relaxed din-text">
+          Esta pista cuenta con diferentes niveles de dificultad, desde sectores para principiantes hasta desafíos más técnicos para riders avanzados. El diseño del circuito permite practicar equilibrio, control de velocidad y maniobras básicas en un entorno controlado y seguro.
+        </p>
+        
+        <p class="text-lg text-gray-700 leading-relaxed din-text">
+          La ubicación es ideal para el aprendizaje: alejada del tráfico, con amplio espacio para maniobrar y un ambiente natural que hace que cada clase sea una experiencia única. Además, contamos con todas las medidas de seguridad necesarias.
+        </p>
+        
+        <!-- Características del lugar -->
+        <div class="space-y-4 mt-8">
+          <h3 class="text-xl font-semibold text-gray-900 din-text">Características del lugar:</h3>
+          <ul class="space-y-2">
+            <li class="flex items-center">
+              <span class="w-1.5 h-1.5 bg-black rounded-full mr-3"></span>
+              <span class="din-text">Pista de pumptrack profesional</span>
+            </li>
+            <li class="flex items-center">
+              <span class="w-1.5 h-1.5 bg-black rounded-full mr-3"></span>
+              <span class="din-text">Diferentes niveles de dificultad</span>
+            </li>
+            <li class="flex items-center">
+              <span class="w-1.5 h-1.5 bg-black rounded-full mr-3"></span>
+              <span class="din-text">Ambiente seguro y controlado</span>
+            </li>
+            <li class="flex items-center">
+              <span class="w-1.5 h-1.5 bg-black rounded-full mr-3"></span>
+              <span class="din-text">Estacionamiento disponible</span>
+            </li>
+          </ul>
+        </div>
+        
+        <!-- Botón simple -->
+        <div class="pt-6">
+          <button class="custom-button">
+            <span>Ver Ubicacion</span>
+            <span class="custom-button-arrow"></span>
+          </button>
+        </div>
+      </div>
+      
+      <!-- Desktop: Carrusel (1/3) -->
+      <div class="w-1/3">
+        <div class="carousel-container-desktop overflow-hidden">
+          <div class="carousel-track-desktop flex" id="carousel-track-donde-desktop">
+            {fotos.map((foto, index) => (
+              <div class="carousel-slide-desktop flex-shrink-0">
+                <img
+                  src={foto.src || "/placeholder.svg"}
+                  alt={foto.alt}
+                  class="w-full h-80 object-cover shadow-md"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+        
+        <!-- Barra indicadora desktop -->
+        <div class="mt-4">
+          <div class="relative w-full bg-gray-200 h-1 rounded-full overflow-hidden">
+            <div 
+              class="absolute h-full bg-black transition-all duration-300 ease-out rounded-full"
+              id="indicator-bar-donde-desktop"
+              style="width: 33.33%; left: 0%"
+            ></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
   </div>
 </section>
+
+<style>
+  @font-face {
+    font-family: 'Bebas-Regular';
+    src: url('/fonts/Bebas-Regular.woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'DIN-Regular';
+    src: url('/fonts/DIN-Regular.woff2');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  .section-title {
+    font-family: 'Bebas-Regular', Arial, sans-serif;
+    color: #000000;
+    font-weight: 100;
+  }
+
+  .din-text {
+    font-family: 'DIN-Regular', Arial, sans-serif;
+  }
+
+  .custom-button {
+    background: white;
+    border: 2px solid black;
+    color: black;
+    padding: 12px 24px;
+    font-family: 'DIN-Regular', Arial, sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .custom-button:hover {
+    background: black;
+    color: white;
+  }
+
+  .custom-button-arrow::after {
+    content: '→';
+    font-size: 16px;
+    transition: transform 0.2s ease;
+  }
+
+  .custom-button:hover .custom-button-arrow::after {
+    transform: translateX(4px);
+  }
+
+  /* Carrusel con espaciado mínimo entre imágenes - Mobile */
+  .carousel-track {
+    transition: none;
+  }
+  
+  .carousel-slide {
+    width: 100%;
+    max-width: 100%;
+    padding: 0 4px; /* Espaciado mínimo entre imágenes */
+  }
+  
+  .carousel-container {
+    width: 100%;
+    position: relative;
+    padding: 0 4px; /* Padding mínimo del contenedor */
+  }
+  
+  /* Carrusel Desktop con espaciado mínimo */
+  .carousel-track-desktop {
+    transition: none;
+  }
+  
+  .carousel-slide-desktop {
+    width: 100%;
+    flex-shrink: 0;
+    padding: 0 3px; /* Espaciado mínimo entre imágenes en desktop */
+  }
+  
+  .carousel-container-desktop {
+    width: 100%;
+    position: relative;
+    padding: 0 3px; /* Padding mínimo del contenedor desktop */
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    
+    // Función para crear carrusel
+    function createCarousel(trackId, indicatorId, isMobile = false) {
+      const track = document.getElementById(trackId);
+      const indicatorBar = document.getElementById(indicatorId);
+      
+      if (!track || !indicatorBar) return;
+      
+      const container = track.parentElement;
+      let currentSlide = 0;
+      const totalSlides = 3;
+      let autoPlayInterval = null;
+      const autoPlayDelay = 4000;
+      
+      // Variables para el control analógico
+      let isDragging = false;
+      let startX = 0;
+      let currentX = 0;
+      let initialTransform = 0;
+      let containerWidth = 0;
+      
+      function updateContainerWidth() {
+        containerWidth = container.offsetWidth;
+        // Ajustar el ancho de los slides considerando el padding
+        const slides = track.querySelectorAll(isMobile ? '.carousel-slide' : '.carousel-slide-desktop');
+        slides.forEach(slide => {
+          if (slide instanceof HTMLElement) {
+            slide.style.width = `${containerWidth}px`;
+          }
+        });
+      }
+      
+      function updateIndicator(slidePosition) {
+        const sectionWidth = 100 / totalSlides;
+        const leftPosition = slidePosition * sectionWidth;
+        
+        indicatorBar.style.left = `${leftPosition}%`;
+        indicatorBar.style.width = `${sectionWidth}%`;
+      }
+      
+      function setTrackPosition(position, withTransition = false) {
+        if (withTransition) {
+          track.style.transition = 'transform 0.3s ease-out';
+        } else {
+          track.style.transition = 'none';
+        }
+        track.style.transform = `translateX(${position}px)`;
+      }
+      
+      function snapToSlide(targetSlide) {
+        currentSlide = Math.max(0, Math.min(targetSlide, totalSlides - 1));
+        const targetPosition = -currentSlide * containerWidth;
+        setTrackPosition(targetPosition, true);
+        updateIndicator(currentSlide);
+      }
+      
+      function nextSlide() {
+        const nextSlideIndex = (currentSlide + 1) % totalSlides;
+        snapToSlide(nextSlideIndex);
+      }
+      
+      function startAutoPlay() {
+        stopAutoPlay();
+        autoPlayInterval = setInterval(nextSlide, autoPlayDelay);
+      }
+      
+      function stopAutoPlay() {
+        if (autoPlayInterval) {
+          clearInterval(autoPlayInterval);
+          autoPlayInterval = null;
+        }
+      }
+      
+      // Touch events
+      track.addEventListener('touchstart', (e) => {
+        isDragging = true;
+        startX = e.touches[0].clientX;
+        currentX = startX;
+        
+        const transform = track.style.transform;
+        const match = transform.match(/translateX$$([^)]+)px$$/);
+        initialTransform = match ? parseFloat(match[1]) : -currentSlide * containerWidth;
+        
+        stopAutoPlay();
+        updateContainerWidth();
+      });
+      
+      track.addEventListener('touchmove', (e) => {
+        if (!isDragging) return;
+        
+        e.preventDefault();
+        currentX = e.touches[0].clientX;
+        const deltaX = currentX - startX;
+        const newPosition = initialTransform + deltaX;
+        
+        const maxPosition = 0;
+        const minPosition = -(totalSlides - 1) * containerWidth;
+        const clampedPosition = Math.max(minPosition, Math.min(maxPosition, newPosition));
+        
+        setTrackPosition(clampedPosition, false);
+        
+        const slideProgress = -clampedPosition / containerWidth;
+        updateIndicator(slideProgress);
+      });
+      
+      track.addEventListener('touchend', (e) => {
+        if (!isDragging) return;
+        
+        isDragging = false;
+        const deltaX = currentX - startX;
+        const threshold = containerWidth * 0.3;
+        
+        let targetSlide = currentSlide;
+        
+        if (Math.abs(deltaX) > threshold) {
+          if (deltaX > 0) {
+            targetSlide = Math.max(0, currentSlide - 1);
+          } else {
+            targetSlide = Math.min(totalSlides - 1, currentSlide + 1);
+          }
+        }
+        
+        snapToSlide(targetSlide);
+        startAutoPlay();
+      });
+      
+      // Mouse events para desktop
+      track.addEventListener('mousedown', (e) => {
+        if (isMobile) return;
+        
+        isDragging = true;
+        startX = e.clientX;
+        currentX = startX;
+        
+        const transform = track.style.transform;
+        const match = transform.match(/translateX$$([^)]+)px$$/);
+        initialTransform = match ? parseFloat(match[1]) : -currentSlide * containerWidth;
+        
+        stopAutoPlay();
+        updateContainerWidth();
+        e.preventDefault();
+      });
+      
+      document.addEventListener('mousemove', (e) => {
+        if (!isDragging || isMobile) return;
+        
+        currentX = e.clientX;
+        const deltaX = currentX - startX;
+        const newPosition = initialTransform + deltaX;
+        
+        const maxPosition = 0;
+        const minPosition = -(totalSlides - 1) * containerWidth;
+        const clampedPosition = Math.max(minPosition, Math.min(maxPosition, newPosition));
+        
+        setTrackPosition(clampedPosition, false);
+        
+        const slideProgress = -clampedPosition / containerWidth;
+        updateIndicator(slideProgress);
+      });
+      
+      document.addEventListener('mouseup', (e) => {
+        if (!isDragging || isMobile) return;
+        
+        isDragging = false;
+        const deltaX = currentX - startX;
+        const threshold = containerWidth * 0.3;
+        
+        let targetSlide = currentSlide;
+        
+        if (Math.abs(deltaX) > threshold) {
+          if (deltaX > 0) {
+            targetSlide = Math.max(0, currentSlide - 1);
+          } else {
+            targetSlide = Math.min(totalSlides - 1, currentSlide + 1);
+          }
+        }
+        
+        snapToSlide(targetSlide);
+        startAutoPlay();
+      });
+      
+      track.addEventListener('touchmove', (e) => {
+        e.preventDefault();
+      }, { passive: false });
+      
+      track.addEventListener('mouseenter', stopAutoPlay);
+      track.addEventListener('mouseleave', startAutoPlay);
+      
+      document.addEventListener('visibilitychange', () => {
+        if (document.visibilityState === 'visible') {
+          startAutoPlay();
+        } else {
+          stopAutoPlay();
+        }
+      });
+      
+      window.addEventListener('resize', () => {
+        updateContainerWidth();
+        snapToSlide(currentSlide);
+      });
+      
+      // Inicializar
+      updateContainerWidth();
+      snapToSlide(0);
+      startAutoPlay();
+    }
+    
+    // Crear carruseles
+    createCarousel('carousel-track-donde-mobile', 'indicator-bar-donde-mobile', true);
+    createCarousel('carousel-track-donde-desktop', 'indicator-bar-donde-desktop', false);
+  });
+</script>
