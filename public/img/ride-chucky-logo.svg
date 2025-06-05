@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Capa_1" data-name="Capa 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 252 50">
+  <defs>
+    <style>
+      .cls-1 {
+        letter-spacing: .03em;
+      }
+
+      .cls-2 {
+        letter-spacing: .02em;
+      }
+
+      .cls-3 {
+        letter-spacing: .03em;
+      }
+
+      .cls-4 {
+        letter-spacing: .01em;
+      }
+
+      .cls-5 {
+        letter-spacing: .02em;
+      }
+
+      .cls-6 {
+        letter-spacing: .04em;
+      }
+
+      .cls-7 {
+        letter-spacing: .01em;
+      }
+
+      .cls-8 {
+        letter-spacing: .01em;
+      }
+
+      .cls-9 {
+        font-family: HaljaOT-Regular, 'Halja OT';
+        font-size: 60px;
+        stroke: #fff;
+        stroke-miterlimit: 10;
+        stroke-width: .55px;
+      }
+    </style>
+  </defs>
+  <text class="cls-9" transform="translate(5.19 47.19)"><tspan class="cls-1" x="0" y="0">R</tspan><tspan class="cls-5" x="25.08" y="0">I</tspan><tspan class="cls-2" x="37.5" y="0">D</tspan><tspan class="cls-6" x="62.28" y="0">E </tspan><tspan class="cls-7" x="99.24" y="0">C</tspan><tspan class="cls-3" x="123.3" y="0">H</tspan><tspan class="cls-4" x="148.62" y="0">U</tspan><tspan class="cls-8" x="172.86" y="0">C</tspan><tspan class="cls-1" x="196.86" y="0">K</tspan><tspan class="cls-6" x="221.94" y="0">Y</tspan></text>
+</svg>
