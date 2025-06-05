@@ -17,19 +17,25 @@
 
   <!-- 🔤 Contenido encima del video -->
   <div class="relative z-10 flex items-center justify-center h-full bg-black/60">
-    <div class="logo-container">
-      <img 
-        src="/img/ride-chucky-logo.svg" 
-        alt="Ride Chucky Logo" 
-        class="ride-chucky-logo"
-      />
+    <div class="text-container">
+      <h1 class="ride-chucky-text">
+        RIDE CHUCKY
+      </h1>
     </div>
   </div>
 </section>
 
 <style>
-  /* Estilos para el contenedor del logo */
-  .logo-container {
+  @font-face {
+    font-family: 'Halja-Regular';
+    src: url('/fonts/Halja-Regular.woff2') format('woff2'),
+         url('/fonts/Halja-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  /* Estilos para el contenedor del texto */
+  .text-container {
     width: 85%;
     max-width: 800px;
     display: flex;
@@ -37,13 +43,18 @@
     padding: 0 20px;
   }
 
-  /* Estilos para el logo SVG */
-  .ride-chucky-logo {
-    width: 85%;
-    height: auto;
-    filter: drop-shadow(0px 0px 8px rgba(0, 0, 0, 0.5));
-    max-height: 60vh;
-    object-fit: contain;
+  /* Estilos para el texto */
+  .ride-chucky-text {
+    font-family: 'Halja-Regular', Arial, sans-serif;
+    font-size: 8rem;
+    font-weight: normal;
+    color: black;
+    text-align: center;
+    line-height: 1.1;
+    letter-spacing: 0.05em;
+    -webkit-text-stroke: 1px white;
+    text-stroke: 1px white;
+    margin: 0;
   }
 
   /* Asegurar que el video se reproduzca correctamente */
@@ -55,42 +66,47 @@
 
   /* Responsive adjustments para móviles */
   @media (max-width: 768px) {
-    .logo-container {
-      width: 90%;
-      max-width: 500px;
-      padding: 0 15px;
+    .text-container {
+      width: 95%;
+      padding: 0 5px;
     }
     
-    .ride-chucky-logo {
+    .ride-chucky-text {
+      font-size: 19vw;
+      letter-spacing: 0.03em;
+      -webkit-text-stroke: 0.5px white;
+      text-stroke: 0.5px white;
       width: 100%;
-      max-height: 40vh;
     }
   }
 
   @media (max-width: 480px) {
-    .logo-container {
+    .text-container {
       width: 95%;
-      max-width: 350px;
-      padding: 0 10px;
+      padding: 0 5px;
     }
     
-    .ride-chucky-logo {
+    .ride-chucky-text {
+      font-size: 19vw;
+      letter-spacing: 0.02em;
+      -webkit-text-stroke: 0.5px white;
+      text-stroke: 0.5px white;
       width: 100%;
-      max-height: 35vh;
     }
   }
 
   /* Para pantallas muy pequeñas */
   @media (max-width: 360px) {
-    .logo-container {
-      width: 98%;
-      max-width: 300px;
-      padding: 0 5px;
+    .text-container {
+      width: 95%;
+      padding: 0 2px;
     }
     
-    .ride-chucky-logo {
+    .ride-chucky-text {
+      font-size: 19vw;
+      -webkit-text-stroke: 0.5px white;
+      text-stroke: 0.5px white;
       width: 100%;
-      max-height: 30vh;
     }
   }
 </style>
