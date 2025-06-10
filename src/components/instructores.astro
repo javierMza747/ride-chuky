@@ -11,23 +11,31 @@ const fotoPrincipal = fotos[0];
 
 <section class="bg-[#f0f0f0] text-[#181818] text-left px-4 relative">
   <div class="mb-4 -mx-4 h-48 relative overflow-hidden">
-  <div id="parallax-bg" class="absolute inset-0 bg-[url('/img/background-1.jpg')] bg-cover bg-center grayscale brightness-95 h-screen will-change-transform"></div>
+  <div id="parallax-bg" class="absolute inset-0 bg-[url('/img/background-2.jpg')] bg-cover bg-center grayscale brightness-95 h-screen will-change-transform"></div>
 
   <div class="relative z-10 flex items-center justify-center h-full px-4">
-    <h1 class="text-6xl font-bebas uppercase leading-none text-black drop-shadow-md text-center">
+    <h1 class="text-6xl font-angel-wish uppercase leading-none text-black drop-shadow-md text-center">
       Nosotros
     </h1>
   </div>
 </div>
 
-  <!-- Imagen con texto encima -->
-  <div class="relative mt-6">
-    <img 
-      src={fotoPrincipal.src} 
-      alt={fotoPrincipal.alt} 
-      class="w-full h-auto object-cover brightness-[0.35] contrast-125"
+  <section class=" py-8 bg-[#f0f0f0]">
+  <div class="bg-[#181818] text-white shadow-md overflow-hidden">
+    <div class="p-6">
+      <p class="text-base leading-relaxed">
+        Somos Juan Cruz y Facundo Arce, dos apasionados del MTB con más de 10 años en el deporte. <br /><br />
+        Nos dedicamos a enseñar mountain bike desde lo básico hasta técnicas más avanzadas.
+      </p>
+    </div>
+
+    <img
+      src="/img/myname-promax.jpg"
+      alt="Juan Cruz y Facundo Arce enseñando MTB"
+      class="w-full object-cover grayscale"
     />
   </div>
+</section>
 </section>
 
 <script is:inline>

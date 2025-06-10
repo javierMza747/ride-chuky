@@ -26,9 +26,30 @@
     font-weight: normal;
     font-style: normal;
 }
+@font-face {
+    font-family: 'angel-wish';
+    src: url('/fonts/Angel-wish.woff');
+    font-weight: normal;
+    font-style: normal;
+}
 
 .font-bebas {
     font-family: 'Bebas-Regular';
+}
+.font-hajal {
+    font-family: 'Halja-regular';
+}
+
+.font-din {
+    font-family: 'DIN-Regular';
+}
+
+.font-fine-serif {
+    font-family: 'fine-serif-regular';
+}
+
+.font-angel-wish {
+    font-family: 'angel-wish';
 }
 
 

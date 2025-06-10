@@ -1,128 +1,47 @@
----
-// src/components/WelcomeSection.astro
----
-
-<section class="relative w-full h-screen overflow-hidden shadow-xl">
-  <!-- 🎥 Video de fondo -->
+<section class="relative w-full h-screen overflow-hidden">
+  <!-- 🎥 Video de fondo con efecto parallax (JS) -->
   <video
+    id="parallax-video"
     autoplay
     muted
     loop
     playsinline
-    class="absolute top-0 left-0 w-full h-full object-cover z-0"
+    class="absolute inset-0 w-full h-full object-cover z-0 will-change-transform pointer-events-none"
   >
     <source src="/videos/mtb-fondo.mp4" type="video/mp4" />
     Tu navegador no soporta videos HTML5.
   </video>
 
-  <!-- 🔤 Contenido encima del video -->
-  <div class="relative z-10 flex items-center justify-center h-full bg-black/60">
-    <div class="text-container">
-      <h1 class="ride-chucky-text">
-        RIDE CHUCKY
-      </h1>
-    </div>
+  <!-- Overlay oscuro para legibilidad -->
+  <div class="absolute inset-0 bg-black/70 z-10"></div>
+
+  <!-- Texto encima -->
+  <div class="relative z-20 flex items-center justify-center h-full px-4">
+    <h1 class="text-[8rem] md:text-[12vw] font-hajal leading-none text-center text-black stroke-white tracking-wide">
+      RIDE CHUCKY
+    </h1>
   </div>
 </section>
 
 <style>
-  @font-face {
-    font-family: 'Halja-Regular';
-    src: url('/fonts/Halja-Regular.woff2') format('woff2'),
-         url('/fonts/Halja-Regular.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-  }
-
-  /* Estilos para el contenedor del texto */
-  .text-container {
-    width: 85%;
-    max-width: 800px;
-    display: flex;
-    justify-content: center;
-    padding: 0 20px;
-  }
-
-  /* Estilos para el texto */
-  .ride-chucky-text {
-    font-family: 'Halja-Regular', Arial, sans-serif;
-    font-size: 8rem;
-    font-weight: normal;
-    color: black;
-    text-align: center;
-    line-height: 1.1;
-    letter-spacing: 0.05em;
-    -webkit-text-stroke: 1px white;
-    text-stroke: 1px white;
-    margin: 0;
-  }
-
-  /* Asegurar que el video se reproduzca correctamente */
-  video {
-    object-fit: cover;
-    width: 100%;
-    height: 100%;
-  }
-
-  /* Responsive adjustments para móviles */
-  @media (max-width: 768px) {
-    .text-container {
-      width: 95%;
-      padding: 0 5px;
-    }
-    
-    .ride-chucky-text {
-      font-size: 19vw;
-      letter-spacing: 0.03em;
-      -webkit-text-stroke: 0.5px white;
-      text-stroke: 0.5px white;
-      width: 100%;
-    }
-  }
-
-  @media (max-width: 480px) {
-    .text-container {
-      width: 95%;
-      padding: 0 5px;
-    }
-    
-    .ride-chucky-text {
-      font-size: 19vw;
-      letter-spacing: 0.02em;
-      -webkit-text-stroke: 0.5px white;
-      text-stroke: 0.5px white;
-      width: 100%;
-    }
-  }
-
-  /* Para pantallas muy pequeñas */
-  @media (max-width: 360px) {
-    .text-container {
-      width: 95%;
-      padding: 0 2px;
-    }
-    
-    .ride-chucky-text {
-      font-size: 19vw;
-      -webkit-text-stroke: 0.5px white;
-      text-stroke: 0.5px white;
-      width: 100%;
-    }
+  /* Compatibilidad para navegadores que no reconocen stroke como utilidad */
+  .stroke-white {
+    -webkit-text-stroke: 0.05rem white;
+    text-stroke: 0.05rem white;
   }
 </style>
+<script is:inline>
+  const video = document.getElementById('parallax-video');
 
-<script>
-  // Asegurar que el video se reproduzca automáticamente
-  document.addEventListener('DOMContentLoaded', function() {
-    const video = document.querySelector('video');
-    if (video) {
-      // Intentar reproducir el video
-      video.play().catch(error => {
-        console.log('Error al reproducir el video:', error);
-      });
-      
-      // Asegurar que el video esté silenciado para autoplay
-      video.muted = true;
-    }
-  });
+  function updateParallax() {
+    if (!video) return;
+
+    const scrollTop = window.scrollY || window.pageYOffset;
+    // Aplicar parallax suavemente
+    video.style.transform = `translateY(${scrollTop}px)`;
+  }
+
+  window.addEventListener('scroll', updateParallax);
+  window.addEventListener('resize', updateParallax);
+  window.addEventListener('load', updateParallax);
 </script>
