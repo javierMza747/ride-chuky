@@ -11,10 +11,10 @@ const fotoPrincipal = fotos[0];
 
 <section class="bg-[#f0f0f0] text-[#181818] text-left px-4 relative">
   <div class="mb-4 -mx-4 h-48 relative overflow-hidden">
-  <div id="parallax-bg" class="absolute inset-0 bg-[url('/img/background-2.jpg')] bg-cover bg-center grayscale brightness-95 h-screen will-change-transform"></div>
+  <div id="parallax-bg" class="absolute inset-0 bg-[url('/img/fondo-iconos-cartas.svg')] bg-black bg-cover bg-center grayscale brightness-95 h-screen will-change-transform"></div>
 
   <div class="relative z-10 flex items-center justify-center h-full px-4">
-    <h1 class="text-6xl font-angel-wish uppercase leading-none text-black drop-shadow-md text-center">
+    <h1 class="text-6xl font-angel-wish uppercase leading-none text-white drop-shadow-md text-center">
       Nosotros
     </h1>
   </div>
@@ -40,12 +40,17 @@ const fotoPrincipal = fotos[0];
 
 <script is:inline>
   const bg = document.getElementById('parallax-bg');
-  const baseOffset = -window.innerHeight / 2;
 
-  window.addEventListener('scroll', () => {
+  function updateParallax() {
+    if (!bg) return;
+
+    const baseOffset = -window.innerHeight / 1.2;
     const scrolled = window.scrollY;
-    if (bg) {
-      bg.style.transform = `translateY(${baseOffset + scrolled * 0.5}px)`;
-    }
-  });
+
+    bg.style.transform = `translateY(${baseOffset + scrolled * 0.5}px)`;
+  }
+
+  window.addEventListener('scroll', updateParallax);
+  window.addEventListener('resize', updateParallax);
+  window.addEventListener('load', updateParallax);
 </script>
