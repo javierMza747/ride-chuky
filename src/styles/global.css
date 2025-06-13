@@ -33,6 +33,30 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'monumented-extended';
+    src: url('/fonts/monumented-extende.woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'silka-bold';
+    src: url('/fonts/silka-bold.woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.font-silka-bold {
+    font-family: 'silka-bold';
+}
+
+.font-monumented-extended {
+    font-family: 'monumented-extended';
+}
+
+.font-monumented {
+    font-family: 'monumented-extended';
+}
 .font-bebas {
     font-family: 'Bebas-Regular';
 }
@@ -54,5 +78,5 @@
 
 
 body {
-    background-color: rgb(0, 0, 0);
+    background-color: #f0f0f0;
 }

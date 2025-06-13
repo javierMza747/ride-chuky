@@ -3,44 +3,66 @@ const fotos = [
   {
     id: 1,
     src: "/img/myname.png",
-    alt: "Juan Cruz enseñando MTB"
-  }
+    alt: "Juan Cruz enseñando MTB",
+  },
 ];
 const fotoPrincipal = fotos[0];
 ---
 
 <section class="bg-[#f0f0f0] text-[#181818] text-left px-4 relative">
-  <div class="mb-4 -mx-4 h-48 relative overflow-hidden">
-  <div id="parallax-bg" class="absolute inset-0 bg-[url('/img/fondo-iconos-cartas.svg')] bg-black bg-cover bg-center grayscale brightness-95 h-screen will-change-transform"></div>
-
-  <div class="relative z-10 flex items-center justify-center h-full px-4">
-    <h1 class="text-6xl font-angel-wish uppercase leading-none text-white drop-shadow-md text-center">
-      NOSOTROS
-    </h1>
-  </div>
-</div>
-
-  <section class=" py-8 bg-[#f0f0f0]">
-  <div class="bg-black text-white shadow-md overflow-hidden">
-    <div class="p-6">
-      <p class="text-base leading-relaxed font-fine-serif">
-        Ride Chucky nació de la mano de <strong>Juan Cruz Páez</strong> y <strong>Facundo Arce</strong>, con una visión clara: ayudar a cada rider a alcanzar su máximo nivel.
-        Desde los más chicos hasta los más grandes, acompañamos el crecimiento técnico de cada ciclista, abarcando desde lo esencial del MTB hasta técnicas avanzadas y especializadas.
-      </p>
+  <!-- Titulo seccion -->
+  <div class="-mx-4 h-20 relative overflow-hidden">
+    <div
+      id="parallax-bg"
+      class="absolute inset-0 bg-[url('/img/fondo-iconos-cartas.svg')] bg-black bg-cover bg-center grayscale brightness-95 h-screen will-change-transform"
+    >
     </div>
-
+    <div class="relative z-10 flex items-center h-full px-4">
+      <h1
+        class="text-4xl font-silka-bold uppercase leading-none text-white drop-shadow-md text-left"
+      >
+        Historia
+      </h1>
+    </div>
+  </div>
+  <div class="-mx-4 relative">
+    <!-- Imagen de fondo -->
     <img
       src="/img/myname-promax.jpg"
       alt="Juan Cruz y Facundo Arce enseñando MTB"
       class="w-full object-cover grayscale"
     />
+
+    <!-- Video centrado encima -->
+    <div class="absolute inset-0 flex items-center justify-center">
+      <video
+        autoplay
+        muted
+        loop
+        playsinline
+        class="w-[70%] h-auto aspect-video translate-y-[110%]"
+      >
+        <source src="/videos/mtb-fondo.mp4" type="video/mp4" />
+        Tu navegador no soporta el elemento de video.
+      </video>
+    </div>
+  </div>
+  <!-- Texto debajo del video -->
+  <div
+    class="mt-25 font-din max-w-3xl mx-auto text-base leading-relaxed"
+  >
+    <p>
+      Somos <strong>Juan Cruz Paez</strong> y <strong>Facundo Arce</strong>, nos
+      dedicamos a enseñar mountain bike desde lo básico hasta técnicas
+      avanzadas, adaptando nuestras clases a cada persona. Creemos que todos
+      pueden experimentar la libertad y adrenalina de rodar sobre dos ruedas,
+      sin importar su edad o experiencia previa.
+    </p>
   </div>
 </section>
-</section>
-
 
 <script is:inline>
-  const bg = document.getElementById('parallax-bg');
+  const bg = document.getElementById("parallax-bg");
 
   function updateParallax() {
     if (!bg) return;
@@ -51,7 +73,7 @@ const fotoPrincipal = fotos[0];
     bg.style.transform = `translateY(${baseOffset + scrolled * 0.5}px)`;
   }
 
-  window.addEventListener('scroll', updateParallax);
-  window.addEventListener('resize', updateParallax);
-  window.addEventListener('load', updateParallax);
+  window.addEventListener("scroll", updateParallax);
+  window.addEventListener("resize", updateParallax);
+  window.addEventListener("load", updateParallax);
 </script>
